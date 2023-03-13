@@ -12,7 +12,20 @@ Invece di visualizzare la password nella index, effettuare un redirect ad una pa
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme).
 Dare all'utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. 
 ---------------------------------------------------------------------------------------------->
+<?php
 
+// Funzione che genera un numero casuale 
+function generate_password($password_lenght)
+{
+    $password_generate = '';
+    $characters_list = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()_+-={}[]|:;"<>,.?/';
+    for ($i = 0; $i < $password_lenght; $i++) {
+        $password_generate .= $characters_list[rand(0, strlen($characters_list) - 1)];
+    }
+    return  $password_generate;
+}
+
+?>
 
 
 
@@ -38,10 +51,19 @@ Dare all'utente anche la possibilità di permettere o meno la ripetizione di car
                 <h2>Generatore di Password</h2>
                 <div class="offset-3 col-6">
                     <form method="GET" action="" class="card p-5">
-                        <label for="psw_user_lenght">Scegli la lunghezza della Password da 6 a 16</label>
-                        <input class="w-100" type="number" name="psw_user_lenght" id="psw_user_lenght" min="6" max="16">
+                        <label for="psw_user_lenght">Scegli la lunghezza della Password da 1 a 20</label>
+                        <input class="w-100" type="number" name="psw_user_lenght" id="psw_user_lenght" min="1" max="20">
                         <button class="btn btn-primary mt-2">Invia</button>
+                        <?php
+                        // Controlla se l'utente ha inserito un numero, allora avvia la funzione e stampa il risultato
+                        if (!empty($_GET['psw_user_lenght'])) {
+                            $password_lenght = $_GET['psw_user_lenght'];
+                            $password_generate = generate_password($password_lenght);
+                            echo '<p class="mt-2">La tua password generata:</p>' . '<h2 class="bg-success text-light py-2">' . $password_generate . '</h2>';
+                        }
+                        ?>
                     </form>
+
                 </div>
             </div>
         </div>
