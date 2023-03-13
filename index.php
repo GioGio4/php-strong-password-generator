@@ -26,14 +26,26 @@ Dare all'utente anche la possibilità di permettere o meno la ripetizione di car
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 </head>
 
 <body>
 
-
+    <main>
+        <div class="container">
+            <div class="row text-center my-4">
+                <h2>Generatore di Password</h2>
+                <div class="offset-3 col-6">
+                    <form method="GET" action="" class="card p-5">
+                        <label for="psw_user_lenght">Scegli la lunghezza della Password da 6 a 16</label>
+                        <input class="w-100" type="number" name="psw_user_lenght" id="psw_user_lenght" min="6" max="16">
+                        <button class="btn btn-primary mt-2">Invia</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 
 </body>
 
